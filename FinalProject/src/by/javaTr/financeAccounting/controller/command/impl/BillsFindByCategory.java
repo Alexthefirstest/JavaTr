@@ -14,7 +14,7 @@ public class BillsFindByCategory implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.User)){
+        if(!Conditions.checkCondition(Conditions.USER)){
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }

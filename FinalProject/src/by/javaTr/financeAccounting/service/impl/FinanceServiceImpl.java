@@ -88,15 +88,18 @@ public class FinanceServiceImpl implements FinanceService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(startDate);
 
-        bills = findByDay(startDate, getBillsForMonth(login, calendar.getTime()));
-        calendar.set(calendar.MONTH, +1);
+        bills = findByDaysInStartMonth(startDate, getBillsForMonth(login, calendar.getTime()));
 
-        int forFinish = Integer.parseInt(new SimpleDateFormat("MM").format(calendar.getTime()))
-                - Integer.parseInt(new SimpleDateFormat("MM").format(startDate));
+        calendar.add(calendar.MONTH, +1);
 
-        for (int i = 0; i < forFinish; i++) {
+        SimpleDateFormat mouthForm = new SimpleDateFormat("MM");
+        SimpleDateFormat yearsForm = new SimpleDateFormat("yyyy");
+
+        while (Integer.parseInt(mouthForm.format(calendar.getTime())) != Integer.parseInt(mouthForm.format(finishDate))
+                && Integer.parseInt(yearsForm.format(calendar.getTime())) != Integer.parseInt(yearsForm.format(finishDate))) {
 
             try {
+
                 bills = concatArray(financeDAO.getBillsForMonth(login, calendar.getTime()), bills);
 
             } catch (DAOException ex) {
@@ -107,10 +110,10 @@ public class FinanceServiceImpl implements FinanceService {
 
             }
 
-            calendar.set(calendar.MONTH, +1);
+            calendar.add(calendar.MONTH, +1);
         }
 
-        bills = concatArray(findByDay(finishDate, getBillsForMonth(login, finishDate)), bills);
+        bills = concatArray(findByDaysInFinishMonth(finishDate, getBillsForMonth(login, finishDate)), bills);
 
         return bills;
     }
@@ -169,24 +172,44 @@ public class FinanceServiceImpl implements FinanceService {
 
         for (int i = 0; i < bills.length; i++) {
             double money = bills[i].getMoney();
-            balance += money > 0 ? bills[i].getMoney() : 0;
+            balance += money < 0 ? bills[i].getMoney() : 0;
         }
         return balance;
     }
 
-    private Bill[] findByDay(Date date, Bill[] bills) {
+    private Bill[] findByDaysInStartMonth(Date date, Bill[] bills) {
 
         if (bills == null) {
             return null;
         }
 
         Bill[] newBills = new Bill[0];
-
-        String day = new SimpleDateFormat("dd").format(date);
+        SimpleDateFormat daysForm = new SimpleDateFormat("dd");
 
         for (int i = 0; i < bills.length; i++) {
 
-            if ((new SimpleDateFormat("dd").format(bills[i].getDate()).equals(day))) {
+
+            if (Integer.parseInt(daysForm.format(bills[i].getDate())) >= Integer.parseInt(daysForm.format(date))) {
+                newBills = concatArray(newBills, new Bill[]{bills[i]});
+            }
+
+        }
+
+        return newBills;
+    }
+
+    private Bill[] findByDaysInFinishMonth(Date date, Bill[] bills) {
+
+        if (bills == null) {
+            return null;
+        }
+
+        Bill[] newBills = new Bill[0];
+        SimpleDateFormat daysForm = new SimpleDateFormat("dd");
+
+        for (int i = 0; i < bills.length; i++) {
+
+            if (Integer.parseInt(daysForm.format(bills[i].getDate())) <= Integer.parseInt(daysForm.format(date))) {
                 newBills = concatArray(newBills, new Bill[]{bills[i]});
             }
 

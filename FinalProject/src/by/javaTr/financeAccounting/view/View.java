@@ -28,7 +28,7 @@ public class View {
             String[] loginAndPassword = null;
             String result;
 
-            System.out.println("1. Registration\n2. Sign in as a user\n3. Sign in as an administrator\n4.Exit: ");
+            System.out.println("\n\n1. Registration\n2. Sign in as a user\n3. Sign in as an administrator\n4.Exit: ");
             choice = inputNumber();
 
 
@@ -91,7 +91,7 @@ public class View {
 
 
         while (choice != 11) {
-            System.out.println("1. Add bill\n2. Add today bill\n3. Get bills for month\n4. Get bills by period\n" +
+            System.out.println("\n\n1. Add bill\n2. Add today bill\n3. Get bills for month\n4. Get bills by period\n" +
                     "5. Find bills by category\n6. Find fills by name\n7. Sort bills by name\n8. Sort bills by balance" +
                     "\n9. Sort bills by category\n10. Sort bills by date\n11. Sigh out: ");
 
@@ -127,8 +127,8 @@ public class View {
                     System.out.print("Input balance: ");
                     parameters[2] = inputText();
 
-                    controller.executeTask("ADD_BILL "
-                            + parameters[0] + " " + parameters[1] + " " + parameters[2] + " " + "0" + " " + login);
+                    System.out.println(controller.executeTask("ADD_BILL "
+                            + parameters[0] + " " + parameters[1] + " " + parameters[2] + " " + "0" + " " + login));
                     break;
 
                 case 3:
@@ -137,8 +137,8 @@ public class View {
                     System.out.print("Input date: ");
                     parameters[0] = inputText();
 
-                    controller.executeTask("GET_BILLS_FOR_MONTH "
-                            + login + " " + parameters[0]);
+                    System.out.println(controller.executeTask("GET_BILLS_FOR_MONTH "
+                            + login + " " + parameters[0]));
                     break;
 
                 case 4:
@@ -149,8 +149,8 @@ public class View {
                     System.out.print("Input finish date: ");
                     parameters[1] = inputText();
 
-                    controller.executeTask("GET_BILLS_FOR_PERIOD "
-                            + login + " " + parameters[0] + " " + parameters[1]);
+                    System.out.println(controller.executeTask("GET_BILLS_FOR_PERIOD "
+                            + login + " " + parameters[0] + " " + parameters[1]));
                     break;
 
                 case 5:
@@ -159,8 +159,8 @@ public class View {
                     System.out.print("Input category: ");
                     parameters[0] = inputText();
 
-                    controller.executeTask("BILLS_FIND_BY_CATEGORY "
-                            + login + " " + parameters[0]);
+                    System.out.println(controller.executeTask("BILLS_FIND_BY_CATEGORY "
+                            + parameters[0]));
                     break;
 
                 case 6:
@@ -169,38 +169,33 @@ public class View {
                     System.out.print("Input name: ");
                     parameters[0] = inputText();
 
-                    controller.executeTask("BILLS_FIND_BY_NAME "
-                            + login + " " + parameters[0]);
+                    System.out.println(controller.executeTask("BILLS_FIND_BY_NAME "
+                             + parameters[0]));
                     break;
 
                 case 7:
 
-                    controller.executeTask("BILLS_SORT_BY_NAME "
-                            + login);
+                    System.out.println(controller.executeTask("BILLS_SORT_BY_NAME "));
                     break;
 
                 case 8:
 
-                    controller.executeTask("BILLS_SORT_BY_BALANCE "
-                            + login);
+                    System.out.println(controller.executeTask("BILLS_SORT_BY_BALANCE "));
                     break;
 
                 case 9:
 
-                    controller.executeTask("BILLS_SORT_BY_CATEGORY "
-                            + login);
+                    System.out.println(controller.executeTask("BILLS_SORT_BY_CATEGORY "));
                     break;
 
                 case 10:
 
-                    controller.executeTask("BILLS_SORT_BY_DATE "
-                            + login);
+                    System.out.println(controller.executeTask("BILLS_SORT_BY_DATE "));
                     break;
 
                 case 11:
 
-                    controller.executeTask("USER_SIGN_OUT "
-                            + login);
+                    System.out.println(controller.executeTask("USER_SIGN_OUT "));
                     break;
 
                 default:
@@ -218,7 +213,7 @@ public class View {
 
 
         while (choice != 6) {
-            System.out.println("1. Add admin\n2. Delete admin\n3. Delete user\n4. Print admin list\n" +
+            System.out.println("\n\n1. Add admin\n2. Delete admin\n3. Delete user\n4. Print admin list\n" +
                     "5. Print user list\n6. Sign out");
 
 
@@ -228,13 +223,14 @@ public class View {
             switch (choice) {
 
                 case 1:
-                    String[] loginAndPassword = inputLoginAndPassword();
+                    String[] loginAndPassword = inputLoginAndPassword(); //admin/admin
                     System.out.println(controller.executeTask("ADMIN_REGISTRATION "
                             + loginAndPassword[0] + " " + loginAndPassword[1]));
 
                     break;
 
                 case 2:
+                    System.out.print("Enter login: ");
                     parameter = inputText();
                     System.out.println(controller.executeTask("DELETE_ADMIN "
                             + parameter));
@@ -242,6 +238,7 @@ public class View {
                     break;
 
                 case 3:
+                    System.out.print("Enter login: ");
                     parameter = inputText();
                     System.out.println(controller.executeTask("DELETE_USER "
                             + parameter));
@@ -263,6 +260,7 @@ public class View {
                 case 6: {
                     System.out.println(controller.executeTask("ADMIN_SIGN_OUT "));
                 }
+                break;
 
                 default:
                     System.out.println("wrong number");

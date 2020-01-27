@@ -14,7 +14,7 @@ public class DeleteUser implements Command {
     @Override
     public String execute(String request) {
 
-        if (!Conditions.checkCondition(Conditions.User)) {
+        if (!Conditions.checkCondition(Conditions.ADMIN)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -26,7 +26,7 @@ public class DeleteUser implements Command {
         }
 
         try {
-            return ServiceFactory.getInstance().getUserDeleterService().deleteUser(parameters[2]) ? "user deleter" :
+            return ServiceFactory.getInstance().getUserDeleterService().deleteUser(parameters[1]) ? "user delete" :
                     "user or bills catalog wasn't exist";
         } catch (ServiceException ex) {
             MyLogger.getLogger().log(Level.WARNING, "DeleteUser", ex);

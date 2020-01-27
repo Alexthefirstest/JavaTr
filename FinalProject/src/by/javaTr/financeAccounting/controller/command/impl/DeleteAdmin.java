@@ -14,7 +14,7 @@ public class DeleteAdmin implements Command {
     @Override
     public String execute(String request) {
 
-        if (!Conditions.checkCondition(Conditions.User)) {
+        if (!Conditions.checkCondition(Conditions.ADMIN)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -26,7 +26,8 @@ public class DeleteAdmin implements Command {
         }
 
         try {
-            return ServiceFactory.getInstance().getAdminDeleterService().deleteAdmin(parameters[2]) ? "admin delete" :
+            return (ServiceFactory.getInstance().getAdminDeleterService().deleteAdmin(
+                    ServiceFactory.getInstance().getTextEncodeService().encode(parameters[1]))) ? "admin delete" :
                     "admin wasn't exist";
         } catch (ServiceException ex) {
             MyLogger.getLogger().log(Level.WARNING, "DeleteAdmin", ex);

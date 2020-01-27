@@ -14,10 +14,12 @@ import java.util.logging.Level;
 
 
 public class AddBill implements Command {
+
+
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.User)){
+        if(!Conditions.checkCondition(Conditions.USER)){
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -33,13 +35,15 @@ public class AddBill implements Command {
             return "wrong date format, use: day.month.year";
         }
 
+        double money;
+
         try {
-            int money = Integer.parseInt(parameters[3]);
+            money = Double.parseDouble(parameters[3]);
         } catch (NumberFormatException ex) {
             return "wrong money format";
         }
 
-        Bill bill = new Bill(parameters[1], parameters[2], Double.parseDouble(parameters[3]), date);
+        Bill bill = new Bill(parameters[1], parameters[2], money, date);
 
         try {
             ServiceFactory.getInstance().getFinanceService().addBills(parameters[5], bill);
@@ -48,7 +52,7 @@ public class AddBill implements Command {
             return "program error";
         }
         return "bill added successfully: name:" + bill.getName() + ", category: " + bill.getCategory() +
-                ", balance: " + bill.getMoney() + ", date: " + (new SimpleDateFormat("dd.mm.yyyy").format(bill.getDate()));
+                ", balance: " + bill.getMoney() + ", date: " + (new SimpleDateFormat("dd.MM.yyyy").format(bill.getDate()));
     }
 
 

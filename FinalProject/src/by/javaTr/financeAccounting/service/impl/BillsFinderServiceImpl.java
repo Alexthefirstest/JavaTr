@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class BillsFinderServiceImpl implements by.javaTr.financeAccounting.service.BillsFinderService {
 
+
     @Override
     public Bill[] findByName(String name, Bill... bills) throws ServiceException {
 
@@ -28,7 +29,7 @@ public class BillsFinderServiceImpl implements by.javaTr.financeAccounting.servi
         }
 
 
-        return (Bill[]) foundBills.toArray();
+        return foundBills.toArray(new Bill[]{});
     }
 
     @Override
@@ -44,13 +45,16 @@ public class BillsFinderServiceImpl implements by.javaTr.financeAccounting.servi
 
 
         for (int i = 0; i < bills.length; i++) {
+
+
             if (bills[i].getCategory().toUpperCase().equals(category.toUpperCase())) {
                 foundBills.add(bills[i]);
+
             }
         }
 
 
-        return (Bill[]) foundBills.toArray();
+        return foundBills.toArray(new Bill[]{});
     }
 
 

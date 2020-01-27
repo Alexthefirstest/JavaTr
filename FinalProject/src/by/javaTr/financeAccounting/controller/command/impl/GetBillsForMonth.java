@@ -16,7 +16,7 @@ public class GetBillsForMonth implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.User)){
+        if(!Conditions.checkCondition(Conditions.USER)){
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -24,12 +24,13 @@ public class GetBillsForMonth implements Command {
         String[] parameters = request.split(" ");
 
         if (parameters.length < 3) {
-            return "wrong parameters";
+            return "wrong parameters, use month.year";
+
         }
 
-        Date date = DateFromString.getDateFromString(parameters[2]);
+        Date date = DateFromString.getDateFromString("03."+parameters[2]);
         if (date == null) {
-            return "wrong date format, use: day.month.year";
+            return "wrong date format, use: month.year";
         }
 
         try {

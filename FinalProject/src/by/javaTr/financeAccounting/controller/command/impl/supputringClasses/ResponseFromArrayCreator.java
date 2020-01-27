@@ -19,21 +19,25 @@ public class ResponseFromArrayCreator {
 
         StringBuilder response = new StringBuilder();
 
+        if(bills==null)
+        {
+            return "find nothing";
+        }
         for (int i = 0; i < bills.length; i++) {
             response.append("name:").append(bills[i].getName()).append(", category: ").append(bills[i].getCategory());
             response.append(", balance: ").append(String.format("%.2f", bills[i].getMoney())).append(", date: ");
-            response.append(new SimpleDateFormat("dd.mm.yyyy").format(bills[i].getDate())).append("\n");
+            response.append(new SimpleDateFormat("dd.MM.yyyy").format(bills[i].getDate())).append("\n");
         }
         response.append("\n_____________________________________________________________________________\n");
 
         try {
-            response.append("Income: ").append(ServiceFactory.getInstance().getFinanceService().getIncome(bills));
-            response.append("Expenses: ").append(ServiceFactory.getInstance().getFinanceService().getExpenses(bills));
+            response.append("\nIncome: ").append(ServiceFactory.getInstance().getFinanceService().getIncome(bills));
+            response.append("\nExpenses: ").append(ServiceFactory.getInstance().getFinanceService().getExpenses(bills));
         } catch (ServiceException ex) {
             MyLogger.getLogger().log(Level.WARNING, "responseFromBillsCreator", ex);
         }
 
-        return bills.toString();
+        return response.toString()+"\n";
     }
 
 }

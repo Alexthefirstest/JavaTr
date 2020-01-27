@@ -25,7 +25,7 @@ public class UserSignIn implements Command {
         try {
             serviceFactory.getUserService().userSignIn(parameters[1],
                     serviceFactory.getTextEncodeService().encode(parameters[2]));
-            Conditions.setCondition(Conditions.User);
+            Conditions.setCondition(Conditions.USER);
             return "welcome";
 
         } catch (ServiceException ex) {

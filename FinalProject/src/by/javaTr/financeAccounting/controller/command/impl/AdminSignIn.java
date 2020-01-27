@@ -27,7 +27,7 @@ public class AdminSignIn implements Command {
                     serviceFactory.getTextEncodeService().encode(parameters[1]),
                     serviceFactory.getTextEncodeService().encode(parameters[2]));
 
-            Conditions.setCondition(Conditions.Admin);
+            Conditions.setCondition(Conditions.ADMIN);
 
             return "welcome";
 

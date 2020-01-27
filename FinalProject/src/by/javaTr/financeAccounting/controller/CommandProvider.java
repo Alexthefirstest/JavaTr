@@ -19,7 +19,7 @@ final class CommandProvider {
         repository.put(CommandName.BILLS_FIND_BY_CATEGORY, new BillsFindByCategory());
         repository.put(CommandName.BILLS_FIND_BY_NAME, new BillsFindByName());
         repository.put(CommandName.BILLS_SORT_BY_BALANCE, new BillsSortByBalance());
-        repository.put(CommandName.BILLS_SORT_BY_CATEGORY, new BillsFindByCategory());
+        repository.put(CommandName.BILLS_SORT_BY_CATEGORY, new BillsSortByCategory());
         repository.put(CommandName.BILLS_SORT_BY_DATE, new BillsSortByDate());
         repository.put(CommandName.BILLS_SORT_BY_NAME, new BillsSortByName());
         repository.put(CommandName.DELETE_ADMIN, new DeleteAdmin());

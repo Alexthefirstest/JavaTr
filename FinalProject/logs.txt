@@ -10,3 +10,5 @@ WARNING: wrong conditions
 WARNING: wrong conditions
 янв 27, 2020 8:37:12 AM by.javaTr.financeAccounting.controller.command.impl.AdminSignOut execute
 WARNING: wrong conditions
+янв 27, 2020 8:59:17 AM by.javaTr.financeAccounting.controller.command.impl.AdminRegistration execute
+WARNING: wrong conditions

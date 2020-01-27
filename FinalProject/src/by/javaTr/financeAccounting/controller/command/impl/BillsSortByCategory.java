@@ -14,7 +14,7 @@ public class BillsSortByCategory implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.User)){
+        if(!Conditions.checkCondition(Conditions.USER)){
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -27,7 +27,7 @@ public class BillsSortByCategory implements Command {
         } catch (ServiceException ex) {
             if (ex.getMessage().equals("bills is null")) {
                 return "bills wasn't choose";
-            }else{
+            } else {
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }

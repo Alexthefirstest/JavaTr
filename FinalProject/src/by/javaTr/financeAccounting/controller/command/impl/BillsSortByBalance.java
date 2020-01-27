@@ -8,7 +8,6 @@ import by.javaTr.financeAccounting.logger.MyLogger;
 import by.javaTr.financeAccounting.service.exceptions.ServiceException;
 import by.javaTr.financeAccounting.service.factory.ServiceFactory;
 
-import javax.sql.rowset.serial.SerialException;
 import java.util.logging.Level;
 
 public class BillsSortByBalance implements Command {
@@ -17,7 +16,7 @@ public class BillsSortByBalance implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.User)){
+        if(!Conditions.checkCondition(Conditions.USER)){
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }

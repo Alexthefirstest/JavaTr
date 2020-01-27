@@ -36,7 +36,7 @@ public class DateFromString {
             return date;
 
         } catch (NumberFormatException ex) {
-            System.out.println("es");
+
             return null;
         }
     }

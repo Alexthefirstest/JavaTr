@@ -1,3 +1,9 @@
+/*
+ *
+ * сортировка пользователей по имени
+ *
+ */
+
 package by.javaTr.financeAccounting.service.impl;
 
 
@@ -27,8 +33,9 @@ public class UserSortingServiceImpl implements UserSortingService {
         }
 
         User[] newUsers = new User[users.length];
+
         System.arraycopy(users, 0, newUsers, 0, users.length);
-       Arrays.sort(newUsers, new UserComparatorByLogin());
+        Arrays.sort(newUsers, new UserComparatorByLogin());
 
         return newUsers;
     }

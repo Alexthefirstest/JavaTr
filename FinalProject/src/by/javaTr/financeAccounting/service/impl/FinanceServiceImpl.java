@@ -1,3 +1,11 @@
+/*
+ *
+ * методы добавления счета пользователя
+ * получения счетов за месяц и за выбранный период
+ *
+ *
+ */
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.bean.Bill;
@@ -17,6 +25,7 @@ public class FinanceServiceImpl implements FinanceService {
     private DAOFactory daoFactory = DAOFactory.getInstance();
     private FinanceDAO financeDAO = daoFactory.getFinanceDAO();
 
+    /*объединяет два массива, не выбрасывает exception если null*/
     private Bill[] concatArray(Bill[] arr1, Bill[] arr2) {
 
         if (arr1 == null) {
@@ -32,6 +41,7 @@ public class FinanceServiceImpl implements FinanceService {
         return newArr;
     }
 
+    /*добавление счета через десериализацию, добавление в массив, сериализацию обратно в файл*/
     @Override
     public boolean addBills(String login, Bill... bills) throws ServiceException {
 
@@ -144,29 +154,36 @@ public class FinanceServiceImpl implements FinanceService {
 
     @Override
     public double getBalance(Bill... bills) throws ServiceException {
+
         nullCheck(bills);
+
         double balance = 0;
 
         for (int i = 0; i < bills.length; i++) {
             balance += bills[i].getMoney();
         }
+
         return balance;
     }
 
     @Override
     public double getIncome(Bill... bills) throws ServiceException {
+
         nullCheck(bills);
         double balance = 0;
 
         for (int i = 0; i < bills.length; i++) {
+
             double money = bills[i].getMoney();
             balance += money > 0 ? bills[i].getMoney() : 0;
         }
+
         return balance;
     }
 
     @Override
     public double getExpenses(Bill... bills) throws ServiceException {
+
         nullCheck(bills);
         double balance = 0;
 
@@ -174,9 +191,11 @@ public class FinanceServiceImpl implements FinanceService {
             double money = bills[i].getMoney();
             balance += money < 0 ? bills[i].getMoney() : 0;
         }
+
         return balance;
     }
 
+    /*метод для помощи поиску в указанном диапазоне - ищет в первом месяце совпадения по дням после указаннного*/
     private Bill[] findByDaysInStartMonth(Date date, Bill[] bills) {
 
         if (bills == null) {
@@ -198,6 +217,7 @@ public class FinanceServiceImpl implements FinanceService {
         return newBills;
     }
 
+    /*метод для помощи поиску в указанном диапазоне - ищет в последнем месяце совпадения по дням перед указаннным*/
     private Bill[] findByDaysInFinishMonth(Date date, Bill[] bills) {
 
         if (bills == null) {
@@ -231,6 +251,7 @@ public class FinanceServiceImpl implements FinanceService {
             }
 
         }
+
     }
 
 }

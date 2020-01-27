@@ -16,23 +16,27 @@ public class BillsSortByBalance implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.USER)){
+        if (!Conditions.checkCondition(Conditions.USER)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
 
         try {
+
             return ResponseFromArrayCreator.responseFromBills(
                     ServiceFactory.getInstance().getBillsSortingService().sortByMoney(
                             LastRespondedArray.getBillsArray()));
 
         } catch (ServiceException ex) {
+
             if (ex.getMessage().equals("bills is null")) {
                 return "bills wasn't choose";
             } else {
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }
+
         }
+
     }
 }

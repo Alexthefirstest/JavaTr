@@ -29,6 +29,7 @@ public class DeleteAdmin implements Command {
             return (ServiceFactory.getInstance().getAdminDeleterService().deleteAdmin(
                     ServiceFactory.getInstance().getTextEncodeService().encode(parameters[1]))) ? "admin delete" :
                     "admin wasn't exist";
+
         } catch (ServiceException ex) {
             MyLogger.getLogger().log(Level.WARNING, "DeleteAdmin", ex);
             return "program error";

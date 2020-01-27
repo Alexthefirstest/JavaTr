@@ -1,3 +1,11 @@
+/*
+ *
+ * -регистрация пользователей
+ * -вход в систему пользователей
+ *
+ */
+
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.bean.User;
@@ -15,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
     private UserFinderDAO userFinder = DAOFactory.getInstance().getUserFinderDAO();
 
+    /*проверка тектста на соответствие шаблону(допустимы только буквы, цифры и нижнее подчеркивание*/
     private void isLoginOk(String text) throws ServiceException {
 
         if (text == null) {
@@ -28,6 +37,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /*
+     *проверка, есть ли пытающийя войти в систему пользователь в источнике данных и совпадают ли вводимый и
+     *
+     * заданный пароли
+     *
+     */
     private String userExistCheck(String login, String password, boolean findAdmin) throws ServiceException {
 
 
@@ -58,13 +73,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String userSignOut(String login) throws ServiceException {
-
-        return null;
-    }
-
-    @Override
     public boolean userRegistration(String login, String password) throws ServiceException {
+
         isLoginOk(login);
         if (login == null) {
             throw new ServiceException("login is null");
@@ -101,11 +111,6 @@ public class UserServiceImpl implements UserService {
         return userExistCheck(login, password, true);
     }
 
-    @Override
-    public String adminSignOut(String login) throws ServiceException {
-
-        return null;
-    }
 
     @Override
     public boolean adminRegistration(String login, String password) throws ServiceException {
@@ -133,20 +138,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User[] getUsers() throws ServiceException {
+
         try {
             return userDAO.getUsers();
         } catch (DAOException ex) {
             throw new ServiceException(ex);
         }
+
     }
 
     @Override
     public User[] getAdmins() throws ServiceException {
+
         try {
             return userDAO.getAdmins();
         } catch (DAOException ex) {
             throw new ServiceException(ex);
         }
+
     }
 
 

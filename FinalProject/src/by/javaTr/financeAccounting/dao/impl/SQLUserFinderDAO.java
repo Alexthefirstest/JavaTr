@@ -1,3 +1,9 @@
+/*
+ *
+ *  методы поиска конкретного польвателя путем проверки файла на его наличие
+ *
+ */
+
 package by.javaTr.financeAccounting.dao.impl;
 
 import by.javaTr.financeAccounting.bean.User;

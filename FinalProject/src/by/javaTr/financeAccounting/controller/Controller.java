@@ -4,7 +4,8 @@ import by.javaTr.financeAccounting.controller.command.Command;
 
 public final class Controller {
 
-    Controller(){}
+    Controller() {
+    }
 
     private final CommandProvider provider = new CommandProvider();
 
@@ -13,9 +14,10 @@ public final class Controller {
         String commandName;
         Command executionCommand;
 
-        commandName =  request.split(" ")[0];
+        commandName = request.split(" ")[0];
         executionCommand = provider.getCommand(commandName);
 
         return executionCommand.execute(request);//response
     }
+
 }

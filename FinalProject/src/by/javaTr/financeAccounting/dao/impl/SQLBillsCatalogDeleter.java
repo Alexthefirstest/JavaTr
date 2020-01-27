@@ -1,3 +1,9 @@
+/*
+ *
+ *  класс содержит override метод, который удаляет из источника данных каталог счетов заданного пользователя
+ *
+ */
+
 package by.javaTr.financeAccounting.dao.impl;
 
 import by.javaTr.financeAccounting.dao.BillsCatalogDeleter;

@@ -16,7 +16,6 @@ public class ServiceFactory {
     private final FinanceService financeService = new FinanceServiceImpl();
     private final TextEncodeService textEncodeService = new TextEncodeServiceImpl();
     private final UserDeleterService userDeleterService = new UserDeleterServiceImpl();
-    private final UserFindereService userFindereService = new UserFinderServiceImpl();
     private final UserService userService = new UserServiceImpl();
     private final UserSortingService userSortingService = new UserSortingServiceImpl();
 
@@ -46,10 +45,6 @@ public class ServiceFactory {
 
     public UserDeleterService getUserDeleterService() {
         return userDeleterService;
-    }
-
-    public UserFindereService getUserFindereService() {
-        return userFindereService;
     }
 
     public UserService getUserService() {

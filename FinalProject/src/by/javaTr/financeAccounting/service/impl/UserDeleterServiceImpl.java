@@ -1,3 +1,13 @@
+/*
+ *
+ *удаление пользователя:
+ * -считать в массив
+ * -проверить, содержит ли пользователя массив
+ * -удалить если содержит
+ * -удалить каталог счетов пользователя
+ *
+ */
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.bean.User;
@@ -36,7 +46,7 @@ public class UserDeleterServiceImpl implements UserDeleterService {
 
             int position = AdminDeleterServiceImpl.findUser(login, users);
 
-            if(position==-1){
+            if (position == -1) {
                 return false;
             }
 

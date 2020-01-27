@@ -1,3 +1,13 @@
+/*
+ *
+ * переводит дату из строкового формата в Date
+ * если строга ="0", устанавливает дату ныняшнего дня
+ *
+ * в случае некорректного ввода сообщает об этом
+ *
+ */
+
+
 package by.javaTr.financeAccounting.controller.command.impl.supputringClasses;
 
 import java.util.Calendar;
@@ -30,7 +40,8 @@ public class DateFromString {
 
                 Calendar calendar = Calendar.getInstance();
 
-                calendar.set(Integer.parseInt(dateStrArr[2]), (Integer.parseInt(dateStrArr[1]) - 1), Integer.parseInt(dateStrArr[0]));
+                calendar.set(Integer.parseInt(dateStrArr[2]), (Integer.parseInt(dateStrArr[1]) - 1),
+                        Integer.parseInt(dateStrArr[0]));
                 date = calendar.getTime();
             }
             return date;

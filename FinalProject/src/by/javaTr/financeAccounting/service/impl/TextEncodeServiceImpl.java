@@ -1,3 +1,9 @@
+/*
+ *
+ *кодировщик текста
+ *
+ */
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.service.exceptions.ServiceException;

@@ -11,10 +11,11 @@ import by.javaTr.financeAccounting.service.factory.ServiceFactory;
 import java.util.logging.Level;
 
 public class BillsSortByCategory implements Command {
+
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.USER)){
+        if (!Conditions.checkCondition(Conditions.USER)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -31,6 +32,8 @@ public class BillsSortByCategory implements Command {
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }
+
         }
+
     }
 }

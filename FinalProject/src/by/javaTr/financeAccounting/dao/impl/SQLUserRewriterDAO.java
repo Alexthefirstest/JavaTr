@@ -1,3 +1,9 @@
+/*
+ *
+ *  методы для полной перезаписи файла с пользователями
+ *
+ */
+
 package by.javaTr.financeAccounting.dao.impl;
 
 import by.javaTr.financeAccounting.bean.User;
@@ -8,12 +14,14 @@ public class SQLUserRewriterDAO implements UserRewriterDAO {
 
     @Override
     public boolean rewriteUsers(User... newUsers) throws DAOException {
-        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt", false, newUsers);
+        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt",
+                false, newUsers);
     }
 
     @Override
     public boolean rewriteAdmins(User... newUsers) throws DAOException {
-        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt", false, newUsers);
+        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt",
+                false, newUsers);
     }
 
 }

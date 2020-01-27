@@ -1,3 +1,11 @@
+/*
+ *
+ *используется выводящими массив методами, преобразует массив в строковый ответ
+ *
+ * так же добавляет к нему баланс счетов в массиве, прибыль и затраты
+ *
+ */
+
 package by.javaTr.financeAccounting.controller.command.impl.supputringClasses;
 
 import by.javaTr.financeAccounting.bean.Bill;
@@ -19,8 +27,7 @@ public class ResponseFromArrayCreator {
 
         StringBuilder response = new StringBuilder();
 
-        if(bills==null)
-        {
+        if (bills == null) {
             return "find nothing";
         }
         for (int i = 0; i < bills.length; i++) {
@@ -31,13 +38,15 @@ public class ResponseFromArrayCreator {
         response.append("\n_____________________________________________________________________________\n");
 
         try {
+            response.append("\nBalance: ").append(ServiceFactory.getInstance().getFinanceService().getBalance(bills));
+            response.append("\n");
             response.append("\nIncome: ").append(ServiceFactory.getInstance().getFinanceService().getIncome(bills));
             response.append("\nExpenses: ").append(ServiceFactory.getInstance().getFinanceService().getExpenses(bills));
         } catch (ServiceException ex) {
             MyLogger.getLogger().log(Level.WARNING, "responseFromBillsCreator", ex);
         }
 
-        return response.toString()+"\n";
+        return response.toString() + "\n";
     }
 
 }

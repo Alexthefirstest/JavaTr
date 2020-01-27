@@ -1,11 +1,14 @@
-package by.javaTr.financeAccounting.logger;
+/*
+*
+* класс для логирования в контроллере
+*
+*/
 
-import by.javaTr.financeAccounting.service.exceptions.ServiceException;
+package by.javaTr.financeAccounting.logger;
 
 
 import java.io.FileInputStream;
 
-import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -21,14 +24,16 @@ public class MyLogger {
     }
 
     static {
+
         try (FileInputStream conf =
                      new FileInputStream((".\\src\\by\\javaTr\\financeAccounting\\logger\\configs.config"))) {
+
             LogManager.getLogManager().readConfiguration(conf);
             myLogger = Logger.getLogger("ControllerLogin");
         } catch (Exception ex) {
             ex.printStackTrace();//lkjlk
         }
-    }
 
+    }
 
 }

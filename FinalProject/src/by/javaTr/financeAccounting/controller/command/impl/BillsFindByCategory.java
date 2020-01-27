@@ -11,6 +11,7 @@ import by.javaTr.financeAccounting.service.factory.ServiceFactory;
 import java.util.logging.Level;
 
 public class BillsFindByCategory implements Command {
+
     @Override
     public String execute(String request) {
 
@@ -32,12 +33,16 @@ public class BillsFindByCategory implements Command {
                             LastRespondedArray.getBillsArray()));
 
         } catch (ServiceException ex) {
+
             if (ex.getMessage().equals("bills is null")) {
                 return "bills wasn't choose";
             } else {
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }
+
         }
+
     }
+
 }

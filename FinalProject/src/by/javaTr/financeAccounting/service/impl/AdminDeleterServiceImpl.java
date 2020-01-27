@@ -1,3 +1,9 @@
+/*
+ *
+ *метды поиска счетов, среди переданных в параметре
+ *
+ */
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.bean.User;

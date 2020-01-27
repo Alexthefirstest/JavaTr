@@ -1,3 +1,10 @@
+/*
+*
+*метды сортировки счетов, переданных как параметр
+*
+*/
+
+
 package by.javaTr.financeAccounting.service.impl;
 
 import by.javaTr.financeAccounting.bean.Bill;

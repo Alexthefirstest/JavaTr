@@ -1,12 +1,14 @@
+/*
+ *
+ * последний отправленный массив
+ * изначально равен Null, при первом выводе массива одной из команд, выводящийся массив заносится в этот класс,
+ * чтобы после работать с помощью него с методами, которые принимают на вход массив (поиска и сортировки)
+ *
+ */
+
 package by.javaTr.financeAccounting.controller.command.impl.supputringClasses;
 
 import by.javaTr.financeAccounting.bean.Bill;
-import by.javaTr.financeAccounting.bean.User;
-import by.javaTr.financeAccounting.logger.MyLogger;
-import by.javaTr.financeAccounting.service.exceptions.ServiceException;
-import by.javaTr.financeAccounting.service.factory.ServiceFactory;
-
-import java.util.logging.Level;
 
 public class LastRespondedArray {
 

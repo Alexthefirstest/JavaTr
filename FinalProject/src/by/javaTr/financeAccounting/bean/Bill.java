@@ -1,4 +1,8 @@
-//вроде готов
+/*
+ *
+ * класс - счет
+ *
+ */
 
 package by.javaTr.financeAccounting.bean;
 
@@ -63,30 +67,38 @@ public class Bill implements Serializable {
 
     @Override
     public String toString() {
+
         final StringBuilder sb = new StringBuilder(getClass().getName());
         sb.append(" {name='").append(name).append('\'');
         sb.append(", category='").append(category).append('\'');
         sb.append(", money=").append(money);
         sb.append(", date='").append(date).append('\'');
         sb.append('}');
+
         return sb.toString();
     }
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
 
         Bill bill = (Bill) o;
 
         if (Double.compare(bill.money, money) != 0) return false;
+
         if (name != null ? !name.equals(bill.name) : bill.name != null) return false;
+
         if (category != null ? !category.equals(bill.category) : bill.category != null) return false;
+
         return date != null ? date.equals(bill.date) : bill.date == null;
     }
 
     @Override
     public int hashCode() {
+
         int result;
         long temp;
         result = name != null ? name.hashCode() : 0;

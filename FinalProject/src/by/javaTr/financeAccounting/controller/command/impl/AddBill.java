@@ -19,7 +19,7 @@ public class AddBill implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.USER)){
+        if (!Conditions.checkCondition(Conditions.USER)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -30,8 +30,9 @@ public class AddBill implements Command {
             return "wrong parameters";
         }
 
-        Date date= DateFromString.getDateFromString(parameters[4]);
-        if(date == null){
+        Date date = DateFromString.getDateFromString(parameters[4]);
+
+        if (date == null) {
             return "wrong date format, use: day.month.year";
         }
 
@@ -51,6 +52,7 @@ public class AddBill implements Command {
             MyLogger.getLogger().log(Level.WARNING, "AddBill Method", ex);
             return "program error";
         }
+
         return "bill added successfully: name:" + bill.getName() + ", category: " + bill.getCategory() +
                 ", balance: " + bill.getMoney() + ", date: " + (new SimpleDateFormat("dd.MM.yyyy").format(bill.getDate()));
     }

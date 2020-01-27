@@ -7,10 +7,11 @@ import by.javaTr.financeAccounting.logger.MyLogger;
 import java.util.logging.Level;
 
 public class AdminSignOut implements Command {
+
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.ADMIN)){
+        if (!Conditions.checkCondition(Conditions.ADMIN)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }

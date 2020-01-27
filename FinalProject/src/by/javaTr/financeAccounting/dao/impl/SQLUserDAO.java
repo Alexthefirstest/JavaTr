@@ -1,3 +1,9 @@
+/*
+ *
+ *  методы для получения пользователей из файла и записи их туда
+ *
+ */
+
 package by.javaTr.financeAccounting.dao.impl;
 
 import by.javaTr.financeAccounting.dao.UserDAO;
@@ -53,7 +59,6 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public boolean addUser(User user) throws DAOException {
 
-
         File newBillsCatalog = new File(".\\src\\by\\javaTr\\financeAccounting\\source\\bills\\" + user.getLogin());
 
         if (!newBillsCatalog.mkdir()) {
@@ -61,7 +66,6 @@ public class SQLUserDAO implements UserDAO {
         }
 
         addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt", true, user);
-
 
         return true;
     }

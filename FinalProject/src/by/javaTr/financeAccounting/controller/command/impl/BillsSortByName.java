@@ -27,12 +27,15 @@ public class BillsSortByName implements Command {
                             LastRespondedArray.getBillsArray()));
 
         } catch (ServiceException ex) {
+
             if (ex.getMessage().equals("bills is null")) {
                 return "bills wasn't choose";
             }else{
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }
+
         }
+
     }
 }

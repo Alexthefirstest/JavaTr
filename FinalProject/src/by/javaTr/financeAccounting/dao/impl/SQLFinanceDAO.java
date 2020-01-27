@@ -1,3 +1,10 @@
+/*
+ *
+ *  содержит методы для записи счетов в файл(сериализация) - в файле счета за месяц
+ * и полуаения из файла счтеа за месяц
+ *
+ */
+
 package by.javaTr.financeAccounting.dao.impl;
 
 import by.javaTr.financeAccounting.bean.Bill;
@@ -10,13 +17,12 @@ import java.util.Date;
 
 public class SQLFinanceDAO implements FinanceDAO {
 
-
+    /*создание директории для файла*/
     private File createFileDirectory(String login, Date date) {
-        String strDate = new String(new SimpleDateFormat("\\MM_yyyy").format(date)+".ser");
+
+        String strDate = new String(new SimpleDateFormat("\\MM_yyyy").format(date) + ".ser");
         String directory = new String(".\\src\\by\\javaTr\\financeAccounting\\source\\bills\\"
                 + login + strDate);
-
-
 
         return new File(directory);
     }
@@ -35,6 +41,7 @@ public class SQLFinanceDAO implements FinanceDAO {
             } catch (Exception ex) {
                 throw new DAOException(ex);
             }
+
         }
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
@@ -55,7 +62,7 @@ public class SQLFinanceDAO implements FinanceDAO {
 
         Bill[] bills;
 
-        File file= createFileDirectory(login, date);
+        File file = createFileDirectory(login, date);
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
 
             bills = (Bill[]) ois.readObject();

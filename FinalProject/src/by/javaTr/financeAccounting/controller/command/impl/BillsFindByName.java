@@ -16,7 +16,7 @@ public class BillsFindByName implements Command {
     @Override
     public String execute(String request) {
 
-        if(!Conditions.checkCondition(Conditions.USER)){
+        if (!Conditions.checkCondition(Conditions.USER)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
             return "program error, wrong available";
         }
@@ -25,6 +25,7 @@ public class BillsFindByName implements Command {
 
         if (parameters.length < 2) {
             MyLogger.getLogger().log(Level.WARNING, "ask for login in finding method: " + getClass().getName());
+
             return "program error";
         }
 
@@ -34,12 +35,16 @@ public class BillsFindByName implements Command {
                             LastRespondedArray.getBillsArray()));
 
         } catch (ServiceException ex) {
+
             if (ex.getMessage().equals("bills is null")) {
                 return "bills wasn't choose";
+
             } else {
                 MyLogger.getLogger().log(Level.WARNING, "sorting", ex);
                 return "program error";
             }
+
         }
+
     }
 }

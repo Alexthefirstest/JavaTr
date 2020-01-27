@@ -9,6 +9,7 @@ import by.javaTr.financeAccounting.service.factory.ServiceFactory;
 import java.util.logging.Level;
 
 public class AdminRegistration implements Command {
+
     @Override
     public String execute(String request) {
 

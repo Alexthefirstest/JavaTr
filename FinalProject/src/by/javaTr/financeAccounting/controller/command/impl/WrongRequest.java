@@ -7,9 +7,10 @@ import java.util.logging.Level;
 
 
 public class WrongRequest implements Command {
+
     @Override
     public String execute(String request) {
-        MyLogger.getLogger().log(Level.WARNING, "WRONG_REQUEST: "+request);
+        MyLogger.getLogger().log(Level.WARNING, "WRONG_REQUEST: " + request);
         return "wrong request";
     }
 }

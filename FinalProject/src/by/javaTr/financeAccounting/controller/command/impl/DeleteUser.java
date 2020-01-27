@@ -32,5 +32,6 @@ public class DeleteUser implements Command {
             MyLogger.getLogger().log(Level.WARNING, "DeleteUser", ex);
             return "program error";
         }
+
     }
 }

@@ -110,7 +110,7 @@ public class View {
                     parameters[1] = inputText();
                     System.out.print("Input balance: ");
                     parameters[2] = inputText();
-                    System.out.print("Input date: ");
+                    System.out.print("Input date(dd.mm.yyyy): ");
                     parameters[3] = inputText();
 
                     System.out.println(controller.executeTask("ADD_BILL "
@@ -134,7 +134,7 @@ public class View {
                 case 3:
                     parameters = new String[1];
 
-                    System.out.print("Input date: ");
+                    System.out.print("Input date(mm.yyyy): ");
                     parameters[0] = inputText();
 
                     System.out.println(controller.executeTask("GET_BILLS_FOR_MONTH "
@@ -144,9 +144,9 @@ public class View {
                 case 4:
                     parameters = new String[2];
 
-                    System.out.print("Input start date: ");
+                    System.out.print("Input start date(dd.mm.yyyy): ");
                     parameters[0] = inputText();
-                    System.out.print("Input finish date: ");
+                    System.out.print("Input finish date(dd.mm.yyyy): ");
                     parameters[1] = inputText();
 
                     System.out.println(controller.executeTask("GET_BILLS_FOR_PERIOD "

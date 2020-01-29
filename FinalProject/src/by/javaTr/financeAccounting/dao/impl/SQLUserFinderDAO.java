@@ -28,7 +28,7 @@ public class SQLUserFinderDAO implements UserFinderDAO {
             while ((line = bf.readLine()) != null) {
                 userData = line.split("/");
 
-                if(login.equals(userData[0])){
+                if (login.equals(userData[0])) {
                     return new User(userData[0], userData[1]);
                 }
 
@@ -40,17 +40,17 @@ public class SQLUserFinderDAO implements UserFinderDAO {
             throw new DAOException("IOException", ex);
         }
 
-        return  null;
+        return null;
     }
 
     @Override
     public User findUser(String login) throws DAOException {
-        return findUserOrAdmin(login, ".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt");
+        return findUserOrAdmin(login, getClass().getResource("").getPath() + ("..\\..\\source\\Users.txt"));
     }
 
     @Override
     public User findAdmin(String login) throws DAOException {
-        return findUserOrAdmin(login, ".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt");
+        return findUserOrAdmin(login, getClass().getResource("").getPath() + ("..\\..\\source\\Admins.txt"));
     }
 
 }

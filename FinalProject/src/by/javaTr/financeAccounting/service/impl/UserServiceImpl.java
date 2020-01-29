@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
             }
 
         } catch (DAOException ex) {
-            throw new ServiceException(ex);
+            throw new ServiceException(ex.getMessage(),ex);
         }
 
         return login;
@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
             }
 
         } catch (DAOException ex) {
-            throw new ServiceException(ex);
+            throw new ServiceException(ex.getMessage(), ex);
         }
 
         return false;
@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserService {
             }
 
         } catch (DAOException ex) {
-            throw new ServiceException(ex);
+            throw new ServiceException(ex.getMessage(), ex);
         }
 
         return false;

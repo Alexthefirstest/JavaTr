@@ -31,7 +31,7 @@ public class SQLBillsCatalogDeleter implements BillsCatalogDeleter {
     @Override
     public boolean deleteUserBillsCatalog(String login) {
 
-        File file = new File(".\\src\\by\\javaTr\\financeAccounting\\source\\bills\\" + login);
+        File file = new File(getClass().getResource("").getPath() + ("..\\..\\source\\bills\\") + login);
 
         if (file.exists()) {
 

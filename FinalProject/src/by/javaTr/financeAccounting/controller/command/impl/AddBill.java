@@ -21,7 +21,7 @@ public class AddBill implements Command {
 
         if (!Conditions.checkCondition(Conditions.USER)) {
             MyLogger.getLogger().log(Level.WARNING, "wrong conditions", getClass().getName());
-            return "program error, wrong available";
+            return "program error";
         }
 
         String[] parameters = request.split(" ");

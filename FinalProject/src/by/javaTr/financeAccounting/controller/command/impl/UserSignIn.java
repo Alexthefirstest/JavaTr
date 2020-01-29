@@ -35,6 +35,10 @@ public class UserSignIn implements Command {
                 return "program error";
             }
 
+            if (ex.getMessage() == "Source file not found") {
+                MyLogger.getLogger().log(Level.WARNING, "User sign in, source problem", ex);
+            }
+
             return ex.getMessage();
         }
 

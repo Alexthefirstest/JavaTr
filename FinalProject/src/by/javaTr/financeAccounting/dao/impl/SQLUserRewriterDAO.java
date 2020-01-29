@@ -14,13 +14,13 @@ public class SQLUserRewriterDAO implements UserRewriterDAO {
 
     @Override
     public boolean rewriteUsers(User... newUsers) throws DAOException {
-        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt",
+        return SQLUserDAO.addUsersOrAdmins(getClass().getResource("").getPath() + ("..\\..\\source\\Users.txt"),
                 false, newUsers);
     }
 
     @Override
     public boolean rewriteAdmins(User... newUsers) throws DAOException {
-        return SQLUserDAO.addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt",
+        return SQLUserDAO.addUsersOrAdmins(getClass().getResource("").getPath() + ("..\\..\\source\\Admins.txt"),
                 false, newUsers);
     }
 

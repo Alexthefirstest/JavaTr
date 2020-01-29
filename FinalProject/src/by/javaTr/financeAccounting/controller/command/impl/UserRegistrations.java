@@ -36,6 +36,10 @@ public class UserRegistrations implements Command {
                 return "program error";
             }
 
+            if(ex.getMessage()=="Source file not found"){
+                MyLogger.getLogger().log(Level.WARNING, "UserRegistrations, source problem", ex);
+            }
+
             return ex.getMessage();
         }
 

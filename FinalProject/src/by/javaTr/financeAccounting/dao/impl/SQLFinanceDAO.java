@@ -21,7 +21,7 @@ public class SQLFinanceDAO implements FinanceDAO {
     private File createFileDirectory(String login, Date date) {
 
         String strDate = new String(new SimpleDateFormat("\\MM_yyyy").format(date) + ".ser");
-        String directory = new String(".\\src\\by\\javaTr\\financeAccounting\\source\\bills\\"
+        String directory = new String(getClass().getResource("").getPath() + ("..\\..\\source\\bills\\")
                 + login + strDate);
 
         return new File(directory);

@@ -15,6 +15,21 @@ import java.util.ArrayList;
 
 public class SQLUserDAO implements UserDAO {
 
+    private final File commonDirectory = new File(getClass().getResource("").getPath() + ("..\\..\\source"));
+
+    public SQLUserDAO() {
+
+        try {
+
+            new File(commonDirectory + "\\Users.txt").createNewFile();
+            new File(commonDirectory + "\\Admins.txt").createNewFile();
+            new File(commonDirectory + "\\bills").mkdir();
+        } catch (Exception ex) {
+        }
+
+    }
+
+
     static boolean addUsersOrAdmins(String directory, boolean flag, User... users) throws DAOException {
 
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(directory, flag))) {
@@ -24,7 +39,7 @@ public class SQLUserDAO implements UserDAO {
             }
 
         } catch (FileNotFoundException ex) {
-            throw new DAOException("File not found", ex);
+            throw new DAOException("Source file not found", ex);
         } catch (IOException ex) {
             throw new DAOException("IOException", ex);
         }
@@ -48,7 +63,7 @@ public class SQLUserDAO implements UserDAO {
 
 
         } catch (FileNotFoundException ex) {
-            throw new DAOException("File not found", ex);
+            throw new DAOException("Source file not found", ex);
         } catch (IOException ex) {
             throw new DAOException("IOException", ex);
         }
@@ -59,13 +74,13 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public boolean addUser(User user) throws DAOException {
 
-        File newBillsCatalog = new File(".\\src\\by\\javaTr\\financeAccounting\\source\\bills\\" + user.getLogin());
+        File newBillsCatalog = new File(commonDirectory+"\\bills\\" + user.getLogin());
 
         if (!newBillsCatalog.mkdir()) {
             return false;
         }
 
-        addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt", true, user);
+        addUsersOrAdmins(commonDirectory+"\\Users.txt", true, user);
 
         return true;
     }
@@ -73,19 +88,19 @@ public class SQLUserDAO implements UserDAO {
     @Override
     public User[] getUsers() throws DAOException {
 
-        return getUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Users.txt");
+        return getUsersOrAdmins(commonDirectory+"\\Users.txt");
     }
 
     @Override
     public boolean addAdmin(User user) throws DAOException {
 
-        return addUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt", true, user);
+        return addUsersOrAdmins(commonDirectory+"\\Admins.txt", true, user);
     }
 
     @Override
     public User[] getAdmins() throws DAOException {
 
-        return getUsersOrAdmins(".\\src\\by\\javaTr\\financeAccounting\\source\\Admins.txt");
+        return getUsersOrAdmins(commonDirectory+"\\Admins.txt");
     }
 
 }

@@ -13,7 +13,7 @@ public class Bill implements Serializable {
 
     private static final long serialVersionUID = 7953829627293509348L;
 
-    private Bill() {
+    public Bill() {
     }
 
     public Bill(String name, double money, Date date) {
